@@ -17,35 +17,19 @@ add following line to the `.bashrc` file to ensure that the `~/bin` folder is in
 
 	$ PATH=${PATH}:~/bin
 
-### 2) Get the YOCTO Project
+### 2) Get the YOCTO Project with SenzaCarta support
 	$ git config --global user.name "your name"
 	$ git config --global user.email "your email"
 	$ git config --list
 	$ cd
 	$ mkdir sc-yocto-bsp
 	$ cd sc-yocto-bsp
-	$ repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-zeus -m imx-5.4.24-2.1.0.xml
+	$ repo init -u https://github.com/econote/sc-yocto-base -b zeus
 
-### 3) Add SenzaCarta support - Create manifest
-	$ cd ~/sc-yocto-bsp/
-	$ mkdir -pv .repo/local_manifests/
-
-Copy and Paste this into your Linux host machine
-
-	$ cat > .repo/local_manifests/imx7dsenzacarta.xml << EOF
-	<?xml version="1.0" encoding="UTF-8"?>
-	<manifest>
-		<remote fetch="git://github.com/econote" name="econote"/>
-		<project remote="econote" revision="master" name="meta-senzacarta" path="sources/meta-senzacarta">
-			<copyfile src="senzacarta-setup-release.sh" dest="senzacarta-setup-release.sh"/>
-		</project>
-	</manifest>
-	EOF
-
-### 4) Sync repositories
+### 3) Sync repositories
 	$ repo sync
 
-### 5) Add SenzaCarta meta layer into BSP
+### 4) Add SenzaCarta meta layer into BSP
 	$ source senzacarta-setup-release.sh
 
 # Building Images

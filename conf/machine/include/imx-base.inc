@@ -194,7 +194,7 @@ IMX_DEFAULT_KERNEL_use-mainline-bsp = "linux-fslc"
 
 PREFERRED_PROVIDER_virtual/kernel ??= "${IMX_DEFAULT_KERNEL}"
 
-SOC_DEFAULT_IMAGE_FSTYPES = "wic.bz2 tar.bz2"
+SOC_DEFAULT_IMAGE_FSTYPES = "wic.bmap  wic.gz"
 
 # Do not update fstab file when using wic images
 WIC_CREATE_EXTRA_ARGS ?= "--no-fstab-update"
